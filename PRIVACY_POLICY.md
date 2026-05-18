@@ -1,7 +1,7 @@
 # Privacy Policy — Dopamine Monitor
 
 **In vigore dal**: 18 maggio 2026
-**Versione documento**: 1.0
+**Versione documento**: 1.1
 **Lingua autoritativa**: italiano
 
 ---
@@ -30,7 +30,7 @@ Per funzionare, Dopamine Monitor legge dal sistema Android **dati di utilizzo de
 
 ### 3.1 Cosa legge
 
-- **Statistiche di utilizzo delle app** (Usage Stats / Digital Wellbeing): per ogni app, quanti minuti l'hai usata in primo piano e in quali fasce orarie. Questo è il dato fondamentale per costruire il "Body Load Index" giornaliero.
+- **Statistiche di utilizzo delle app** (Usage Stats / Digital Wellbeing): per ogni app, quanti minuti l'hai usata in primo piano e in quali fasce orarie. Questo è il dato fondamentale per costruire il "Dopa Index" giornaliero.
 - **Eventi di notifica** (Notification Access): conteggio numerico delle notifiche ricevute e aperte. Non leggiamo il contenuto delle notifiche, solo che siano avvenute.
 - **Lista delle app installate sul dispositivo** (launchable apps): solo per categorizzare il loro tipo (social, gambling, produttività, ecc.) in fase di calcolo. Letta on-demand, mai trasmessa.
 
@@ -62,7 +62,7 @@ L'app funziona solo se concedi i seguenti permessi. Tu li concedi attivamente, d
 | Permesso | A cosa serve | Cosa succede se lo neghi |
 |---|---|---|
 | **Accesso alle statistiche di utilizzo** (`PACKAGE_USAGE_STATS`) | Leggere quanto tempo passi sulle app | L'app non può funzionare e te lo dirà |
-| **Accesso alle notifiche** (`NotificationListener`) | Contare le notifiche ricevute (non il contenuto) | L'asse "notifiche" del BLI resta a zero, ma il resto funziona |
+| **Accesso alle notifiche** (`NotificationListener`) | Contare le notifiche ricevute (non il contenuto) | L'asse "notifiche" del Dopa Index resta a zero, ma il resto funziona |
 | **Esecuzione in background** | Aggiornare la storia ogni giorno a mezzanotte | Devi aprire l'app manualmente per veder aggiornati i dati |
 
 Non chiediamo permessi su localizzazione, contatti, microfono, fotocamera, SMS, storage, ecc.
@@ -75,13 +75,13 @@ Questa è l'unica circostanza in cui dei dati che ti riguardano lasciano il disp
 
 ### 5.1 A cosa serve
 
-Migliorare il modello statistico del Body Load Index e calibrarlo su una popolazione di utenti reali. Vediamo distribuzioni aggregate (es. "il BLI medio degli utenti dopo 30 giorni d'uso è X"), non dati individuali.
+Migliorare il modello statistico del Dopa Index e calibrarlo su una popolazione di utenti reali. Vediamo distribuzioni aggregate (es. "il Dopa Index medio degli utenti dopo 30 giorni d'uso è X"), non dati individuali.
 
 ### 5.2 Cosa viene inviato
 
 Esattamente un piccolo riassunto JSON per ogni giorno chiuso che hai sul dispositivo. Lo schema completo è documentato nel codice sorgente (`lib/telemetry/payload_builder.dart`). Contiene:
 
-- Numeri da 0 a 100 per il BLI complessivo e per ognuno degli 8 assi (social, video, notifiche, ecc.).
+- Numeri da 0 a 100 per il Dopa Index complessivo e per ognuno degli 8 assi (social, video, notifiche, ecc.).
 - Quale asse è risultato "dominante".
 - Quali "pattern" sono stati attivati (es. "uso post-23:00").
 - Un identificativo casuale del dispositivo (`install_id`, generato dall'app stessa la prima volta), versione dell'app, versione di Android.

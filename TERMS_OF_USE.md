@@ -1,14 +1,14 @@
 # Termini d'uso — Dopamine Monitor
 
 **In vigore dal**: 18 maggio 2026
-**Versione documento**: 1.0
+**Versione documento**: 1.1
 **Lingua autoritativa**: italiano
 
 ---
 
 ## 1. Cos'è Dopamine Monitor
 
-Dopamine Monitor è un'applicazione Android per Android 9.0 e successivi che osserva passivamente come usi il telefono e ti restituisce uno "specchio strutturale" giornaliero — un indice composito chiamato **Body Load Index (BLI)** — che vuole aiutarti a riconoscere pattern d'uso compulsivi (uso post-23:00, frammentazione attentiva, eccessiva esposizione a contenuti dopaminici).
+Dopamine Monitor è un'applicazione Android per Android 9.0 e successivi che osserva passivamente come usi il telefono e ti restituisce uno "specchio strutturale" giornaliero — un indice composito chiamato **Dopa Index** — che vuole aiutarti a riconoscere pattern d'uso compulsivi (uso post-23:00, frammentazione attentiva, eccessiva esposizione a contenuti dopaminici).
 
 **L'app è uno strumento di auto-osservazione, non un dispositivo medico.** I numeri che vedi sono indicatori statistici basati su un modello dichiarato (vedi §5), non diagnosi cliniche.
 
@@ -34,7 +34,7 @@ Per evitare malintesi:
 
 - **Non è un'app di parental control**. Non è progettata per monitorare i figli, dipendenti, partner o altre persone. È un'app di **auto**-osservazione.
 - **Non è un sistema di blocco app**. Esistono popup di "frizione" opzionali, ma sono inviti, non blocchi: l'utente può sempre proseguire.
-- **Non è un'app medica**. I punteggi BLI non sostituiscono valutazioni cliniche. Se hai preoccupazioni serie sul tuo rapporto con la tecnologia, rivolgiti a un professionista.
+- **Non è un'app medica**. I punteggi del Dopa Index non sostituiscono valutazioni cliniche. Se hai preoccupazioni serie sul tuo rapporto con la tecnologia, rivolgiti a un professionista.
 - **Non è un coach motivazionale**. Non ti dice cosa fare, non ti invia messaggi push di "incoraggiamento", non gamifica l'astinenza. Mostra dati e basta.
 - **Non è un servizio cloud**. I tuoi dati di utilizzo restano sul tuo dispositivo (vedi Privacy Policy §3-§4). L'unica trasmissione possibile è una telemetria aggregata anonima opzionale (§5.5 Privacy Policy).
 
@@ -48,7 +48,7 @@ L'app legge dal sistema Android tre categorie di dati (con il tuo permesso espli
 2. **Conteggio notifiche ricevute/aperte** (Notification Listener)
 3. **Lista app installate** (solo per categorizzarle)
 
-Da questi calcola, una volta al giorno, otto "assi" (social high-dopamine, video binge, infomania, body monitoring, produttività iperattiva, notifiche, uso notturno, frammentazione) e li combina in un indice 0-100 chiamato BLI.
+Da questi calcola, una volta al giorno, otto "assi" (social high-dopamine, video binge, infomania, body monitoring, produttività iperattiva, notifiche, uso notturno, frammentazione) e li combina in un indice 0-100 chiamato Dopa Index.
 
 Il modello statistico e le sue limitazioni sono documentate nelle specifiche tecniche del progetto (vedi `docs/bli-v5-proposta-v0.5.2.md` nel repository). Il modello viene chiamato "v0.1" in fase di lancio ed è suscettibile di revisioni successive.
 
@@ -58,13 +58,13 @@ Il modello statistico e le sue limitazioni sono documentate nelle specifiche tec
 
 Sii consapevole dei limiti dello strumento:
 
-- **Il BLI è una stima, non una misura.** I pesi assegnati alle diverse categorie di app sono basati su letteratura e best-guess clinico, non sono validati epidemiologicamente.
+- **Il Dopa Index è una stima, non una misura.** I pesi assegnati alle diverse categorie di app sono basati su letteratura e best-guess clinico, non sono validati epidemiologicamente.
 - **La categorizzazione delle app è imperfetta.** L'app classifica i pacchetti installati secondo una baseline interna che copre le app più diffuse in Italia. Le app non riconosciute finiscono in categoria "altro" con peso ridotto. Puoi correggere a mano dalle Impostazioni.
 - **Il "tempo di utilizzo" Android misura solo il primo piano con schermo acceso.** Un'app come Spotify in background non viene contata; un'app come WhatsApp aperta ma non guardata sì.
 - **Pattern personali estremi (uso lavorativo notturno, fasce orarie invertite per shift work, ecc.) possono produrre falsi positivi.** L'app non lo sa.
-- **Non c'è ground truth.** Non sappiamo "qual è il BLI giusto" per te. Lo strumento serve a osservare variazioni nel tempo, non a fissare soglie assolute.
+- **Non c'è ground truth.** Non sappiamo "qual è il Dopa Index giusto" per te. Lo strumento serve a osservare variazioni nel tempo, non a fissare soglie assolute.
 
-Se vedi un BLI molto alto o pattern allarmanti, **non è una diagnosi**. È un invito a fermarti a pensare. Se ti senti veramente preoccupato del tuo rapporto con il telefono, parlane con qualcuno di fiducia o un professionista qualificato.
+Se vedi un Dopa Index molto alto o pattern allarmanti, **non è una diagnosi**. È un invito a fermarti a pensare. Se ti senti veramente preoccupato del tuo rapporto con il telefono, parlane con qualcuno di fiducia o un professionista qualificato.
 
 ---
 
@@ -74,7 +74,7 @@ L'app può, in alcuni casi, mostrare popup di "frizione" (es. prima di aprire un
 
 - **Inviti, non blocchi**: puoi sempre proseguire premendo "Continua".
 - **Statisticamente registrati**: l'app conta quanti popup hai visto e quanti hai rispettato. È una metrica di auto-osservazione, non un punteggio di "bravura".
-- **Disattivabili**: dalle Impostazioni puoi disabilitare i popup di frizione mantenendo attivo il calcolo del BLI.
+- **Disattivabili**: dalle Impostazioni puoi disabilitare i popup di frizione mantenendo attivo il calcolo del Dopa Index.
 
 ---
 
@@ -84,7 +84,7 @@ Vedi Privacy Policy §5. Per chiarezza:
 
 - L'invio di telemetria verso i nostri server è **opt-in esplicito**, mai attivo di default.
 - Puoi disattivarlo in qualsiasi momento.
-- Non condiziona il funzionamento dell'app: il BLI funziona identico con o senza telemetria.
+- Non condiziona il funzionamento dell'app: il Dopa Index funziona identico con o senza telemetria.
 
 ---
 
@@ -94,7 +94,7 @@ L'app è fornita **"così com'è"** (as-is). Nei limiti consentiti dalla legge i
 
 In particolare:
 
-- Non garantiamo che il calcolo del BLI sia esente da bug.
+- Non garantiamo che il calcolo del Dopa Index sia esente da bug.
 - Non garantiamo continuità del servizio di telemetria (i server potrebbero essere temporaneamente non disponibili — l'app continuerà a funzionare localmente).
 - Possiamo aggiornare l'app, modificare le funzionalità, ritirare l'app dal Play Store. In caso di ritiro, l'installazione esistente continuerà a funzionare localmente finché compatibile col sistema Android.
 
@@ -115,7 +115,7 @@ Nulla in questo paragrafo esclude o limita responsabilità per dolo, colpa grave
 ## 11. Proprietà intellettuale
 
 - Il codice sorgente di Dopamine Monitor è ospitato in un repository privato non accessibile pubblicamente. I documenti legali (questa Privacy Policy e i Termini d'uso) sono pubblicati pubblicamente all'indirizzo https://atoffa978.github.io/dopamine-monitor-legal/ . Diritti di copia e modifica del codice riservati al titolare.
-- "Body Load Index" e il modello v5 sono concetti originali sviluppati per questo progetto; descritti pubblicamente nelle specifiche tecniche del repository.
+- "Dopa Index" (denominazione user-facing dell'indice composito; nella documentazione tecnica interna è ancora referenziato come "Body Load Index / BLI v5") e il modello sono concetti originali sviluppati per questo progetto; descritti pubblicamente nelle specifiche tecniche del repository.
 - Loghi, nome dell'app e identità visiva restano di proprietà del titolare (vedi Privacy Policy §2).
 
 ---

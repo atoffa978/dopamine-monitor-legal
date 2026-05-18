@@ -29,41 +29,20 @@
 }
 * { box-sizing: border-box; }
 html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--fg);
+  margin: 0; padding: 0;
+  background: var(--bg); color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 16px; line-height: 1.55;
 }
-.wrap {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 24px 20px 64px;
-}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 64px; }
 .top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 28px;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 20px; border-bottom: 1px solid var(--rule);
+  margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
 }
-.top .brand {
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
-}
-.top nav a {
-  margin-left: 16px;
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-}
+.top .brand { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; }
+.top nav a { margin-left: 16px; color: var(--muted); text-decoration: none; font-size: 0.95rem; }
 .top nav a:hover { color: var(--accent); }
 h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.02em; }
 h2 { font-size: 1.25rem; margin-top: 2.2em; letter-spacing: -0.01em; }
@@ -71,61 +50,16 @@ h3 { font-size: 1.05rem; margin-top: 1.6em; }
 p, li { font-size: 1rem; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1em 0;
-  font-size: 0.95rem;
-}
-th, td {
-  border: 1px solid var(--rule);
-  padding: 8px 10px;
-  text-align: left;
-  vertical-align: top;
-}
+table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.95rem; }
+th, td { border: 1px solid var(--rule); padding: 8px 10px; text-align: left; vertical-align: top; }
 th { background: var(--code-bg); font-weight: 600; }
-code {
-  background: var(--code-bg);
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-size: 0.9em;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px;
+  font-size: 0.9em; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
 hr { border: none; border-top: 1px solid var(--rule); margin: 2em 0; }
-.meta {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin: 0 0 24px;
-}
 .foot {
-  margin-top: 56px;
-  padding-top: 20px;
-  border-top: 1px solid var(--rule);
-  color: var(--muted);
-  font-size: 0.85rem;
+  margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: 0.85rem;
 }
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  margin: 28px 0;
-}
-@media (min-width: 560px) {
-  .cards { grid-template-columns: 1fr 1fr; }
-}
-.card {
-  display: block;
-  padding: 18px 20px;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.15s;
-}
-.card:hover { border-color: var(--accent); text-decoration: none; }
-.card .ctitle { font-weight: 600; font-size: 1.05rem; margin: 0 0 4px; }
-.card .cdesc { color: var(--muted); font-size: 0.92rem; margin: 0; }
-.intro { font-size: 1.05rem; color: var(--muted); margin: 8px 0 0; }
 </style>
 </head>
 <body>
@@ -141,7 +75,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2em 0; }
 <main>
 <h1>Privacy Policy — Dopamine Monitor</h1>
 <p><strong>In vigore dal</strong>: 18 maggio 2026
-<strong>Versione documento</strong>: 1.0
+<strong>Versione documento</strong>: 1.1
 <strong>Lingua autoritativa</strong>: italiano</p>
 <hr>
 <h2>1. In due righe</h2>
@@ -158,7 +92,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2em 0; }
 <p>Per funzionare, Dopamine Monitor legge dal sistema Android <strong>dati di utilizzo del telefono</strong>. Questi dati <strong>non lasciano mai il dispositivo</strong> salvo quanto descritto al §5 ("Telemetria"), e solo dopo essere stati aggregati e anonimizzati.</p>
 <h3>3.1 Cosa legge</h3>
 <ul>
-<li><strong>Statistiche di utilizzo delle app</strong> (Usage Stats / Digital Wellbeing): per ogni app, quanti minuti l'hai usata in primo piano e in quali fasce orarie. Questo è il dato fondamentale per costruire il "Body Load Index" giornaliero.</li>
+<li><strong>Statistiche di utilizzo delle app</strong> (Usage Stats / Digital Wellbeing): per ogni app, quanti minuti l'hai usata in primo piano e in quali fasce orarie. Questo è il dato fondamentale per costruire il "Dopa Index" giornaliero.</li>
 <li><strong>Eventi di notifica</strong> (Notification Access): conteggio numerico delle notifiche ricevute e aperte. Non leggiamo il contenuto delle notifiche, solo che siano avvenute.</li>
 <li><strong>Lista delle app installate sul dispositivo</strong> (launchable apps): solo per categorizzare il loro tipo (social, gambling, produttività, ecc.) in fase di calcolo. Letta on-demand, mai trasmessa.</li>
 </ul>
@@ -198,7 +132,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2em 0; }
 <tr>
 <td><strong>Accesso alle notifiche</strong> (<code>NotificationListener</code>)</td>
 <td>Contare le notifiche ricevute (non il contenuto)</td>
-<td>L'asse "notifiche" del BLI resta a zero, ma il resto funziona</td>
+<td>L'asse "notifiche" del Dopa Index resta a zero, ma il resto funziona</td>
 </tr>
 <tr>
 <td><strong>Esecuzione in background</strong></td>
@@ -212,11 +146,11 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2em 0; }
 <h2>5. Telemetria verso i nostri server (opzionale, opt-in)</h2>
 <p>Questa è l'unica circostanza in cui dei dati che ti riguardano lasciano il dispositivo. <strong>Devi acconsentire esplicitamente</strong> in fase di onboarding o dalle Impostazioni: senza il tuo consenso esplicito, l'app non invia nulla a nessun server.</p>
 <h3>5.1 A cosa serve</h3>
-<p>Migliorare il modello statistico del Body Load Index e calibrarlo su una popolazione di utenti reali. Vediamo distribuzioni aggregate (es. "il BLI medio degli utenti dopo 30 giorni d'uso è X"), non dati individuali.</p>
+<p>Migliorare il modello statistico del Dopa Index e calibrarlo su una popolazione di utenti reali. Vediamo distribuzioni aggregate (es. "il Dopa Index medio degli utenti dopo 30 giorni d'uso è X"), non dati individuali.</p>
 <h3>5.2 Cosa viene inviato</h3>
 <p>Esattamente un piccolo riassunto JSON per ogni giorno chiuso che hai sul dispositivo. Lo schema completo è documentato nel codice sorgente (<code>lib/telemetry/payload_builder.dart</code>). Contiene:</p>
 <ul>
-<li>Numeri da 0 a 100 per il BLI complessivo e per ognuno degli 8 assi (social, video, notifiche, ecc.).</li>
+<li>Numeri da 0 a 100 per il Dopa Index complessivo e per ognuno degli 8 assi (social, video, notifiche, ecc.).</li>
 <li>Quale asse è risultato "dominante".</li>
 <li>Quali "pattern" sono stati attivati (es. "uso post-23:00").</li>
 <li>Un identificativo casuale del dispositivo (<code>install_id</code>, generato dall'app stessa la prima volta), versione dell'app, versione di Android.</li>
