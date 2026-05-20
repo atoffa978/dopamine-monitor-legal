@@ -1,0 +1,99 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<title>Data deletion — Dopamine Monitor</title>
+<meta name="description" content="How to request deletion of your data from Dopamine Monitor.">
+<link rel="canonical" href="https://atoffa978.github.io/dopamine-monitor-legal/data-deletion-en.html">
+<link rel="alternate" hreflang="it" href="https://atoffa978.github.io/dopamine-monitor-legal/data-deletion.html">
+<link rel="alternate" hreflang="en" href="https://atoffa978.github.io/dopamine-monitor-legal/data-deletion-en.html">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --fg: #1a1a1a; --muted: #5a5a5a; --rule: #e4e4e4; --accent: #1f6feb; --code-bg: #f5f5f5;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15171a; --fg: #e8e8e8; --muted: #9a9a9a; --rule: #2a2d31; --accent: #58a6ff; --code-bg: #1f2227; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 64px; }
+.top { display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 20px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+.top .brand { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; }
+.top nav a { margin-left: 16px; color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.top nav a:hover { color: var(--accent); }
+.top nav .lang { margin-left: 16px; font-size: 0.85rem; letter-spacing: 0.04em; }
+.top nav .lang .active { color: var(--fg); font-weight: 600; }
+h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.02em; }
+h2 { font-size: 1.25rem; margin-top: 2.2em; letter-spacing: -0.01em; }
+p, li { font-size: 1rem; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-size: 0.9em;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: 0.85rem; }
+.lang-notice { border-left: 3px solid var(--accent); margin: 24px 0; padding: 8px 0 8px 14px;
+  color: var(--muted); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><a href="./index-en.html" style="color:inherit;text-decoration:none">Dopamine Monitor</a></div>
+  <nav>
+    <a href="./index-en.html">Index</a>
+    <a href="./privacy-en.html">Privacy</a>
+    <a href="./terms-en.html">Terms</a>
+    <span class="lang">
+      <a href="./data-deletion.html">IT</a>
+      <span style="color:var(--rule)"> | </span>
+      <a href="./data-deletion-en.html" class="active">EN</a>
+    </span>
+  </nav>
+</header>
+<main>
+  <h1>Data deletion</h1>
+  <p class="lang-notice">English translation provided in good faith for accessibility. The Italian version remains the legally binding text in case of any discrepancy or legal dispute.</p>
+
+  <p>Dopamine Monitor is a passive self-observation app: the vast majority of data concerning you (usage statistics, notification counts, list of installed apps) <strong>never leaves your device</strong>. Only if you have explicitly opted in to the optional telemetry, the app sends an anonymous daily summary (0-100 scores, no app names) to our European servers.</p>
+
+  <h2>1. Delete local data on the device</h2>
+  <p>Open the app → <strong>Settings</strong> → <strong>Erase all data</strong>. The operation immediately and irreversibly deletes from the device:</p>
+  <ul>
+    <li>all accumulated daily statistics (up to 60 days of history)</li>
+    <li>user preferences (language, hours, category overrides)</li>
+    <li>the random <code>install_id</code> generated the first time you opened the app</li>
+    <li>the count of "friction" popups triggered and respected</li>
+  </ul>
+  <p>Alternatively, uninstalling the app produces the same effect: the Android system automatically removes all associated data.</p>
+
+  <h2>2. Delete telemetry data on our servers</h2>
+  <p>If you have opted in to the optional telemetry, our servers (Scaleway, Paris) may hold the anonymous daily summaries associated with your <code>install_id</code>. To request earlier deletion (by default these are automatically removed after 24 months):</p>
+  <ol>
+    <li>Retrieve your <code>install_id</code>: open the app → <strong>Settings</strong> → <strong>Telemetry</strong> → <strong>Show installation ID</strong>. It is a UUID in the format <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</li>
+    <li>Write an email to <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a> with subject "GDPR data deletion request" and your <code>install_id</code> in the body.</li>
+    <li>You will receive confirmation within <strong>30 days</strong> from receipt of the request, as required by Art. 17 GDPR.</li>
+  </ol>
+  <p>No other personal data is required (no name, no document). The <code>install_id</code> is sufficient because it is the only identifier we link to telemetry data.</p>
+
+  <h2>3. What remains after deletion</h2>
+  <p>Aggregated statistical distributions (e.g. "the average Dopa Index of users after 30 days of use is X") may remain on our systems even after deletion of your individual payloads, because they are aggregated anonymous data containing no records referable to you.</p>
+
+  <h2>4. Legal references</h2>
+  <p>Right to erasure: <a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">Art. 17 of EU Regulation 2016/679 (GDPR)</a>. For all other rights (access, rectification, restriction, objection, portability, complaint to the Italian Data Protection Authority), see <a href="./privacy-en.html#7-your-gdpr-rights">Privacy Policy §7</a>.</p>
+
+  <h2>5. Contact</h2>
+  <p>For any question: <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a></p>
+</main>
+<footer class="foot">
+  Authoritative document in Italian. Version: 1.0 · Effective from 20 May 2026.
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<title>Cancellazione dati — Dopamine Monitor</title>
+<meta name="description" content="Come richiedere la cancellazione dei tuoi dati da Dopamine Monitor.">
+<link rel="canonical" href="https://atoffa978.github.io/dopamine-monitor-legal/data-deletion.html">
+<link rel="alternate" hreflang="it" href="https://atoffa978.github.io/dopamine-monitor-legal/data-deletion.html">
+<link rel="alternate" hreflang="en" href="https://atoffa978.github.io/dopamine-monitor-legal/data-deletion-en.html">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --fg: #1a1a1a; --muted: #5a5a5a; --rule: #e4e4e4; --accent: #1f6feb; --code-bg: #f5f5f5;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15171a; --fg: #e8e8e8; --muted: #9a9a9a; --rule: #2a2d31; --accent: #58a6ff; --code-bg: #1f2227; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 64px; }
+.top { display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 20px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+.top .brand { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; }
+.top nav a { margin-left: 16px; color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.top nav a:hover { color: var(--accent); }
+.top nav .lang { margin-left: 16px; font-size: 0.85rem; letter-spacing: 0.04em; }
+.top nav .lang .active { color: var(--fg); font-weight: 600; }
+h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.02em; }
+h2 { font-size: 1.25rem; margin-top: 2.2em; letter-spacing: -0.01em; }
+p, li { font-size: 1rem; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-size: 0.9em;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><a href="./" style="color:inherit;text-decoration:none">Dopamine Monitor</a></div>
+  <nav>
+    <a href="./">Indice</a>
+    <a href="./privacy.html">Privacy</a>
+    <a href="./terms.html">Termini</a>
+    <span class="lang">
+      <a href="./data-deletion.html" class="active">IT</a>
+      <span style="color:var(--rule)"> | </span>
+      <a href="./data-deletion-en.html">EN</a>
+    </span>
+  </nav>
+</header>
+<main>
+  <h1>Cancellazione dei dati</h1>
+  <p>Dopamine Monitor è un'app di auto-osservazione passiva: la stragrande maggioranza dei dati che ti riguardano (statistiche di utilizzo, conteggio notifiche, lista app installate) <strong>non lascia mai il tuo dispositivo</strong>. Solo se hai esplicitamente acconsentito alla telemetria opzionale, l'app invia un riassunto giornaliero anonimo (punteggi 0-100, nessun nome di app) ai nostri server europei.</p>
+
+  <h2>1. Cancellare i dati locali sul dispositivo</h2>
+  <p>Apri l'app → <strong>Impostazioni</strong> → <strong>Cancella tutti i dati</strong>. L'operazione cancella immediatamente e in modo irreversibile dal dispositivo:</p>
+  <ul>
+    <li>tutte le statistiche giornaliere accumulate (fino a 60 giorni di storico)</li>
+    <li>le preferenze utente (lingua, orari, override categorie)</li>
+    <li>l'<code>install_id</code> casuale generato la prima volta che hai aperto l'app</li>
+    <li>il conteggio dei popup di "frizione" attivati e rispettati</li>
+  </ul>
+  <p>In alternativa, disinstallare l'app produce lo stesso effetto: il sistema Android elimina automaticamente tutti i dati associati.</p>
+
+  <h2>2. Cancellare i dati telemetria sui nostri server</h2>
+  <p>Se hai acconsentito alla telemetria opzionale, sui nostri server (Scaleway, Parigi) possono trovarsi i riassunti giornalieri anonimi associati al tuo <code>install_id</code>. Per richiederne la cancellazione anticipata (di default vengono cancellati automaticamente dopo 24 mesi):</p>
+  <ol>
+    <li>Recupera il tuo <code>install_id</code>: apri l'app → <strong>Impostazioni</strong> → <strong>Telemetria</strong> → <strong>Mostra ID installazione</strong>. È un UUID nel formato <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</li>
+    <li>Scrivi un'email a <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a> con oggetto "Richiesta cancellazione dati GDPR" e il tuo <code>install_id</code> nel corpo del messaggio.</li>
+    <li>Riceverai conferma entro <strong>30 giorni</strong> dalla ricezione della richiesta, come previsto dall'art. 17 GDPR.</li>
+  </ol>
+  <p>Non sono richiesti altri dati personali (no nome, no documento). L'<code>install_id</code> è sufficiente perché è l'unico identificatore che colleghiamo ai dati telemetria.</p>
+
+  <h2>3. Quali dati restano dopo la cancellazione</h2>
+  <p>Le distribuzioni statistiche aggregate (es. "il Dopa Index medio degli utenti dopo 30 giorni d'uso è X") possono restare nei nostri sistemi anche dopo la cancellazione dei tuoi payload individuali, perché sono dati aggregati anonimi che non contengono record riferibili a te.</p>
+
+  <h2>4. Riferimenti normativi</h2>
+  <p>Diritto di cancellazione: <a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">art. 17 del Regolamento UE 2016/679 (GDPR)</a>. Per tutti gli altri diritti (accesso, rettifica, limitazione, opposizione, portabilità, reclamo al Garante), vedi la <a href="./privacy.html#7-i-tuoi-diritti-gdpr">Privacy Policy §7</a>.</p>
+
+  <h2>5. Contatto</h2>
+  <p>Per qualunque domanda: <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a></p>
+</main>
+<footer class="foot">
+  Documento autoritativo in italiano. Versione: 1.0 · In vigore dal 20 maggio 2026.
+</footer>
+</div>
+</body>
+</html>
