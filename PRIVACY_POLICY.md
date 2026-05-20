@@ -1,7 +1,7 @@
 # Privacy Policy — Dopamine Monitor
 
 **In vigore dal**: 20 maggio 2026
-**Versione documento**: 1.2
+**Versione documento**: 1.3
 **Lingua autoritativa**: italiano
 
 ---
@@ -81,15 +81,17 @@ Migliorare il modello statistico del Dopa Index e calibrarlo su una popolazione 
 
 Esattamente un piccolo riassunto JSON per ogni giorno chiuso che hai sul dispositivo. Lo schema completo è documentato nel codice sorgente (`lib/telemetry/payload_builder.dart`). Contiene:
 
-- Numeri da 0 a 100 per il Dopa Index complessivo e per ognuno degli 8 assi (social, video, notifiche, ecc.).
+- Numeri da 0 a 100 per il Dopa Index complessivo e per ognuno degli 8 assi (frammentazione, intensità, frequenza compulsiva, reward immediato, reward variabile, anticipazione, ansia da controllo, uso fuori contesto).
 - Quale asse è risultato "dominante".
 - Quali "pattern" sono stati attivati (es. "uso post-23:00").
-- Un identificativo casuale del dispositivo (`install_id`, generato dall'app stessa la prima volta), versione dell'app, versione di Android.
+- Versione dell'app, versione di Android.
 - Un "secchio" di osservazione (`nuovo` < 14 giorni, `assestato` 14-89, `lungo` ≥ 90) invece del numero esatto di giorni di uso — questo per evitare che il numero preciso ci permetta di riconoscere il singolo dispositivo.
 - Numero di eventi di frizione (popup) attivati e rispettati nella giornata.
+- Un campo `dedup_hash`: una stringa di 16 caratteri esadecimali generata localmente dall'app come `SHA-256(install_id + "|" + giorno_di_osservazione)`, troncata. Serve solo a impedire al server di accettare due volte lo stesso giorno (deduplica). Il server **non riceve mai l'install_id** e **non può ricostruirlo** dall'hash (funzione one-way). Poiché il giorno di osservazione fa parte dell'input dell'hash, due giorni diversi dello stesso dispositivo generano hash diversi e **non collegabili tra loro** lato server.
 
 ### 5.3 Cosa **NON** viene mai inviato
 
+- Mai l'`install_id` in chiaro (il server riceve solo dedup_hash, una funzione one-way).
 - Mai il nome di un'app specifica che hai usato.
 - Mai durate di uso individuali (solo il punteggio aggregato).
 - Mai contenuti, messaggi, identificativi personali, email, numero di telefono, IMEI, indirizzi MAC, identificativi pubblicitari.
@@ -97,16 +99,16 @@ Esattamente un piccolo riassunto JSON per ogni giorno chiuso che hai sul disposi
 
 ### 5.4 Identificazione e natura giuridica del dato
 
-L'unico identificativo trasmesso è un `install_id` casuale generato dall'app la prima volta che la apri (UUID). Non è collegato al tuo account Google, al tuo numero IMEI, al tuo nome o email, ad alcun login. Se disinstalli e reinstalli l'app, ottieni un nuovo `install_id` non collegabile al precedente.
+L'app genera localmente, alla prima apertura, un identificativo casuale chiamato `install_id` (UUIDv4, 32 caratteri esadecimali). Non è collegato al tuo account Google, al tuo numero IMEI, al tuo nome o email, ad alcun login. **L'install_id non lascia mai il dispositivo**: viene usato solo come input locale per generare il `dedup_hash` (vedi §5.2) e per consentirti, su tua richiesta, di esercitare il diritto di cancellazione (§7.4).
 
-I payload che riceviamo sono **pseudonimizzati**, non anonimi, ai sensi dell'art. 4 n. 5 del GDPR. La differenza è importante:
+I payload che riceviamo sui nostri server sono **pseudonimizzati**, non anonimi, ai sensi dell'art. 4 n. 5 del GDPR. La differenza è importante:
 
 - **Anonimo** significa che il dato non può in nessun modo essere ricondotto a una persona specifica, neppure con informazioni aggiuntive. I dati anonimi non sono dati personali e non rientrano nel GDPR.
-- **Pseudonimizzato** significa che il dato non contiene identificatori diretti (nome, email, numero di telefono), ma è collegato a una chiave (nel nostro caso, l'`install_id`) che potrebbe permettere di risalire alla persona se quella chiave fosse messa in relazione con altre informazioni.
+- **Pseudonimizzato** significa che il dato non contiene identificatori diretti (nome, email, numero di telefono), ma è collegato a una chiave (nel nostro caso, il `dedup_hash`) che potrebbe permettere di risalire alla persona se quella chiave fosse messa in relazione con altre informazioni — nello specifico, se tu ci comunichi il tuo `install_id`, possiamo ricalcolare l'insieme dei dedup_hash che ti corrispondono e identificare i tuoi record.
 
-Sul nostro server, l'`install_id` da solo è un numero casuale: non sappiamo a chi appartenga. Diventa una chiave di identificazione solo se sei tu a comunicarcelo (per esercitare i tuoi diritti — vedi §7). Per questo motivo trattiamo i tuoi payload **come dati personali ai sensi del GDPR**, applicando tutte le garanzie del Regolamento (consenso esplicito, limitazione delle finalità, conservazione limitata, diritti dell'interessato).
+Sul nostro server, da solo, un dedup_hash è un numero apparentemente casuale: non sappiamo a quale install_id corrisponda e non possiamo collegarlo ad altri payload dello stesso dispositivo. Diventa una chiave di identificazione solo se sei tu a comunicarci il tuo install_id (per esercitare i tuoi diritti — vedi §7). Per questo motivo trattiamo i tuoi payload **come dati personali ai sensi del GDPR**, applicando tutte le garanzie del Regolamento (consenso esplicito, limitazione delle finalità, conservazione limitata, diritti dell'interessato).
 
-Le **distribuzioni statistiche aggregate** che produciamo a partire dai payload (es. medie, distribuzioni, deviazioni standard su tutta la popolazione di utenti) sono invece dati anonimi, perché perdono la chiave `install_id` durante il processo di aggregazione.
+Le **distribuzioni statistiche aggregate** che produciamo a partire dai payload (es. medie, distribuzioni, deviazioni standard su tutta la popolazione di utenti) sono invece dati anonimi, perché perdono qualsiasi chiave durante il processo di aggregazione.
 
 ### 5.5 Dove vengono inviati
 
@@ -131,25 +133,32 @@ In qualsiasi momento puoi andare in Impostazioni → "Telemetria" e scegliere "N
 
 ## 7. I tuoi diritti GDPR
 
-Per esercitare i tuoi diritti sui payload trasmessi al nostro server tramite telemetria opzionale, dovrai comunicarci il tuo `install_id` (lo trovi nell'app: Impostazioni → Telemetria → "Mostra ID installazione"). Senza l'`install_id` non possiamo identificare i tuoi record specifici nel database. Per i dati che restano sul dispositivo, hai il pieno controllo dall'app stessa.
+Per esercitare i tuoi diritti sui payload trasmessi al nostro server tramite telemetria opzionale, dovrai comunicarci il tuo `install_id` (lo trovi nell'app: Impostazioni → sezione Telemetria → bottone "Mostra ID installazione"). Senza l'`install_id` non possiamo identificare i tuoi record specifici nel database, perché sul server vediamo solo dedup_hash apparentemente casuali e non sappiamo quali appartengono a te. Per i dati che restano sul dispositivo, hai il pieno controllo dall'app stessa.
 
 ### 7.1 Diritto di informazione
 Stai leggendo questo documento.
 
 ### 7.2 Diritto di accesso (art. 15 GDPR)
-Puoi chiederci se trattiamo dati riferibili al tuo dispositivo e ricevere copia dei payload trasmessi. Per farlo, ci serve il tuo `install_id` (lo trovi in Impostazioni → "Telemetria" → "Mostra ID installazione"). Scrivici a dopamine.monitor.dev@gmail.com.
+Puoi chiederci se trattiamo dati riferibili al tuo dispositivo e ricevere copia dei payload trasmessi. Per farlo, ci serve il tuo `install_id`. Scrivici a dopamine.monitor.dev@gmail.com.
 
 ### 7.3 Diritto di rettifica (art. 16 GDPR)
 I dati trasmessi sono punteggi numerici calcolati: non c'è qualcosa da "rettificare". Se l'app calcola male un valore (es. bug nell'engine), puoi segnalarlo con il pulsante feedback in-app.
 
 ### 7.4 Diritto di cancellazione (art. 17 GDPR)
-Puoi chiedere la cancellazione anticipata dei payload riferiti al tuo `install_id`, scrivendoci a dopamine.monitor.dev@gmail.com e includendo l'ID. Procediamo entro 30 giorni. Vedi anche la pagina dedicata: https://atoffa978.github.io/dopamine-monitor-legal/data-deletion.html
+Puoi chiedere la cancellazione anticipata dei payload riferiti al tuo dispositivo. La procedura:
+
+1. Recupera il tuo `install_id` dall'app: Impostazioni → sezione Telemetria → "Mostra ID installazione" → bottone "Copia".
+2. Scrivici a dopamine.monitor.dev@gmail.com con oggetto "Richiesta cancellazione dati GDPR" e l'`install_id` nel corpo del messaggio.
+3. Lato server ricalcoliamo l'insieme dei dedup_hash possibili per quel dispositivo (uno per ogni giorno di osservazione, fino a un massimo di 730) ed eliminiamo tutti i record corrispondenti dal database.
+4. Riceverai conferma entro **30 giorni** dalla ricezione della richiesta, come previsto dall'art. 17 GDPR.
+
+Vedi anche la pagina dedicata: https://atoffa978.github.io/dopamine-monitor-legal/data-deletion.html
 
 ### 7.5 Diritto di limitazione (art. 18 GDPR)
 Puoi richiedere che i tuoi dati siano "congelati" senza ulteriore trattamento. Scrivici.
 
 ### 7.6 Diritto di opposizione e portabilità (art. 20-21 GDPR)
-Puoi chiedere copia dei payload trasmessi in formato JSON. Sono già strutturati, ti basta richiederli.
+Puoi chiedere copia dei payload trasmessi in formato JSON. Sono già strutturati, ti basta richiederli (con install_id, come per la cancellazione).
 
 ### 7.7 Diritto di reclamo (art. 77 GDPR)
 Se ritieni che il trattamento dei tuoi dati violi il GDPR, puoi presentare reclamo all'autorità di controllo:
@@ -161,7 +170,7 @@ Se ritieni che il trattamento dei tuoi dati violi il GDPR, puoi presentare recla
 
 ## 8. Dati di minori
 
-L'app non è destinata a minori di 14 anni. Non chiediamo intenzionalmente dati di minori. Se sei genitore/tutore e ritieni che un minore sotto la tua tutela usi l'app, contattaci.
+L'app è destinata ad adulti maggiorenni (18 anni o più), in coerenza con la fascia d'età dichiarata sullo store Google Play. Non chiediamo intenzionalmente dati di minori. Se sei genitore o tutore e ritieni che un minore sotto la tua responsabilità usi l'app, contattaci e provvederemo alla cancellazione di qualsiasi dato eventualmente trasmesso.
 
 ---
 

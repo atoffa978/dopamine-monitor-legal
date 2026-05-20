@@ -24,7 +24,7 @@ Installando e utilizzando Dopamine Monitor, accetti questi Termini d'uso e la Pr
 
 A maggiorenni interessati a osservare il proprio uso del telefono per fini di auto-consapevolezza. Non è uno strumento clinico, terapeutico, diagnostico, di prevenzione o trattamento di disturbi mentali, comportamentali o da uso di sostanze.
 
-L'app **non è destinata**: a minori sotto i 14 anni, a persone in trattamento clinico per disturbi correlati all'uso di tecnologia o dipendenze comportamentali senza la supervisione del proprio specialista, a uso professionale (HR, scuole, monitoraggio di terzi).
+L'app **non è destinata**: a minori sotto i 18 anni, a persone in trattamento clinico per disturbi correlati all'uso di tecnologia o dipendenze comportamentali senza la supervisione del proprio specialista, a uso professionale (HR, scuole, monitoraggio di terzi).
 
 ---
 

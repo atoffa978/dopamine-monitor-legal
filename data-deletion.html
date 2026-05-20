@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="it">
 <head>
 <meta charset="utf-8">
@@ -72,33 +72,34 @@ code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-si
   <p>In alternativa, disinstallare l'app produce lo stesso effetto: il sistema Android elimina automaticamente tutti i dati associati.</p>
 
   <h2>2. Cancellare i dati telemetria sui nostri server</h2>
-  <p>Se hai acconsentito alla telemetria opzionale, sui nostri server (Scaleway, Parigi) possono trovarsi i riassunti giornalieri <strong>pseudonimizzati</strong> associati al tuo <code>install_id</code>. Per richiederne la cancellazione anticipata (di default vengono cancellati automaticamente dopo 24 mesi):</p>
+  <p>Se hai acconsentito alla telemetria opzionale, sui nostri server (Scaleway, Parigi) possono trovarsi i riassunti giornalieri <strong>pseudonimizzati</strong> riferibili al tuo dispositivo. Per richiederne la cancellazione anticipata (di default vengono cancellati automaticamente dopo 24 mesi):</p>
   <ol>
-    <li>Recupera il tuo <code>install_id</code>: apri l'app &rarr; <strong>Impostazioni</strong> &rarr; <strong>Telemetria</strong> &rarr; <strong>Mostra ID installazione</strong>. &Egrave; un UUID nel formato <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</li>
+    <li>Recupera il tuo <code>install_id</code>: apri l'app &rarr; <strong>Impostazioni</strong> &rarr; sezione <strong>Telemetria</strong> &rarr; bottone <strong>Mostra ID installazione</strong> &rarr; bottone <strong>Copia</strong>. È un UUID di 32 caratteri esadecimali, ad esempio <code>7b3f2c914d8e4123abcd1234567890ef</code>.</li>
     <li>Scrivi un'email a <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a> con oggetto "Richiesta cancellazione dati GDPR" e il tuo <code>install_id</code> nel corpo del messaggio.</li>
+    <li>Lato server ricalcoliamo l'insieme dei <code>dedup_hash</code> possibili per quel dispositivo (uno per ogni giorno di osservazione, fino a 730) ed eliminiamo tutti i record corrispondenti dal database.</li>
     <li>Riceverai conferma entro <strong>30 giorni</strong> dalla ricezione della richiesta, come previsto dall'art. 17 GDPR.</li>
   </ol>
-  <p>Non sono richiesti altri dati personali (no nome, no documento). L'<code>install_id</code> &egrave; sufficiente perch&eacute; &egrave; l'unico identificatore che colleghiamo ai dati telemetria.</p>
+  <p>Non sono richiesti altri dati personali (no nome, no documento). L'<code>install_id</code> è sufficiente perché è l'unico input che permette di ricostruire i tuoi dedup_hash e identificare i record corrispondenti.</p>
 
-  <h2>3. Perch&eacute; serve l'install_id</h2>
+  <h2>3. Perché serve l'install_id</h2>
   <div class="callout">
     <p style="margin:0 0 8px"><strong>I dati che riceviamo sono pseudonimizzati, non anonimi.</strong></p>
-    <p style="margin:0">Il nostro server non sa chi sei: non ha la tua email, il tuo nome, n&eacute; dati che colleghino il tuo <code>install_id</code> alla tua identit&agrave; reale. Da solo, l'install_id &egrave; un numero casuale senza significato per noi.</p>
+    <p style="margin:0">Il nostro server non sa chi sei: non riceviamo né la tua email, né il tuo nome, né il tuo install_id in chiaro. Riceviamo solo un <code>dedup_hash</code> per ogni giorno trasmesso — una stringa di 16 caratteri esadecimali generata dall'app come <code>SHA-256(install_id + "|" + giorno_di_osservazione)</code>, troncata. Da sola questa stringa è apparentemente casuale e non possiamo collegarla né al tuo install_id né tra giorni diversi.</p>
   </div>
-  <p>Quando tu ci comunichi il tuo install_id via email, in quel momento ci dai la chiave che ci permette di identificare i tuoi record e cancellarli. Prima di quella tua email, non sappiamo associare i record a una persona specifica.</p>
-  <p>Per questo non possiamo identificarti se ci scrivi senza l'install_id. Se hai disinstallato l'app prima di averlo salvato altrove, scrivici comunque: faremo del nostro meglio (es. cancellando in base alla data approssimativa di prima e ultima ricezione), ma non possiamo garantire la cancellazione completa dei tuoi record specifici se non possiamo distinguerli con certezza da quelli di altri utenti.</p>
+  <p>Quando ci comunichi il tuo install_id via email, in quel momento ci dai la chiave che ci permette di ricalcolare tutti i dedup_hash che ti corrispondono (uno per ogni giorno potenziale, da 0 a 730) e cancellare i record relativi. Prima della tua email, sul server vediamo solo numeri apparentemente casuali e non sappiamo a chi appartengono.</p>
+  <p>Per questo non possiamo identificarti se ci scrivi senza l'install_id. Se hai disinstallato l'app prima di averlo salvato altrove (o se l'hai resettato tramite "Cancella tutti i dati"), l'install_id è perso per sempre e i tuoi dati sul server diventano effettivamente anonimi anche per noi: scrivici comunque e proveremo a cancellare in base ad altri criteri (es. data approssimativa di prima e ultima ricezione), ma non possiamo garantire la cancellazione completa dei tuoi record specifici se non possiamo distinguerli con certezza da quelli di altri utenti.</p>
 
   <h2>4. Quali dati restano dopo la cancellazione</h2>
-  <p>Le distribuzioni statistiche aggregate (es. "il Dopa Index medio degli utenti dopo 30 giorni d'uso &egrave; X") possono restare nei nostri sistemi anche dopo la cancellazione dei tuoi payload individuali, perch&eacute; sono dati aggregati anonimi (senza chiave <code>install_id</code>) che non contengono record riferibili a te.</p>
+  <p>Le distribuzioni statistiche aggregate (es. "il Dopa Index medio degli utenti dopo 30 giorni d'uso è X") possono restare nei nostri sistemi anche dopo la cancellazione dei tuoi payload individuali, perché sono dati aggregati anonimi (senza chiave <code>dedup_hash</code> individuale) che non contengono record riferibili a te.</p>
 
   <h2>5. Riferimenti normativi</h2>
-  <p>Diritto di cancellazione: <a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">art. 17 del Regolamento UE 2016/679 (GDPR)</a>. Per tutti gli altri diritti (accesso, rettifica, limitazione, opposizione, portabilit&agrave;, reclamo al Garante), vedi la <a href="./privacy.html#7-i-tuoi-diritti-gdpr">Privacy Policy &sect;7</a>.</p>
+  <p>Diritto di cancellazione: <a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">art. 17 del Regolamento UE 2016/679 (GDPR)</a>. Per tutti gli altri diritti (accesso, rettifica, limitazione, opposizione, portabilità, reclamo al Garante), vedi la <a href="./privacy.html#7-i-tuoi-diritti-gdpr">Privacy Policy &sect;7</a>.</p>
 
   <h2>6. Contatto</h2>
   <p>Per qualunque domanda: <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a></p>
 </main>
 <footer class="foot">
-  Documento autoritativo in italiano. Versione: 1.1 &middot; In vigore dal 20 maggio 2026.
+  Documento autoritativo in italiano. Versione: 1.2 &middot; In vigore dal 20 maggio 2026.
 </footer>
 </div>
 </body>
