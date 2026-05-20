@@ -1,18 +1,18 @@
-# Privacy Policy — Dopamine Monitor
+# Privacy Policy — Dopamine Monitor (English)
 
-**Effective from**: 18 May 2026
-**Document version**: 1.1
+**Effective date**: 20 May 2026
+**Document version**: 1.2
 **Authoritative language**: Italian
 
-> **English-language notice.** This document is the English translation of the official Italian Privacy Policy. We provide it in good faith to make our practices accessible to non-Italian-speaking users. In case of any discrepancy, ambiguity, or legal dispute, **the Italian version (`privacy_policy.md`) is the legally binding text**. The Italian version is published at https://atoffa978.github.io/dopamine-monitor-legal/ and inside the app.
+> The Italian version of this Privacy Policy is the legally binding text. This English translation is provided in good faith for the convenience of non-Italian-speaking users. In case of any discrepancy or legal dispute, the Italian version prevails.
 
 ---
 
 ## 1. In two lines
 
-Dopamine Monitor is a **passive self-observation app** for phone usage. Everything that concerns you personally — which apps you use, when, for how long — stays on your device. We send only, **if you agree to it**, a small anonymous daily summary to our servers, used to improve the statistical model. We do not sell data to anyone, we do not display advertising, we do not profile you.
+Dopamine Monitor is a **passive self-observation** app for phone usage. Everything that concerns you personally — which apps you use, when, for how long — stays on your device. To our servers we send only, **if you accept**, a small pseudonymized daily summary to improve the statistical model. We do not sell data to anyone, we do not show advertising, we do not profile you.
 
-If this is enough for you, you can stop reading here. Otherwise, the details follow.
+If this is enough, you can stop reading. For the details, continue.
 
 ---
 
@@ -22,50 +22,50 @@ If this is enough for you, you can stop reading here. Otherwise, the details fol
 **Address**: Via Centro di Romagnano 38, 37023 Grezzana (VR), Italy
 **Contact email**: dopamine.monitor.dev@gmail.com
 
-For any request concerning the processing of your personal data, you may write to the address above. We respond within 30 days.
+For any request regarding the processing of your personal data, write to the email address above. We respond within 30 days.
 
 ---
 
-## 3. What data the app reads on your device
+## 3. What data the app collects on your device
 
-In order to function, Dopamine Monitor reads **phone usage data** from the Android system. This data **never leaves the device** except as described in §5 ("Telemetry"), and only after it has been aggregated and anonymised.
+To work, Dopamine Monitor reads from the Android system **phone usage data**. This data **never leaves the device** except as described in §5 ("Telemetry"), and only after being aggregated into synthetic 0-100 scores (never with the names of individual apps).
 
 ### 3.1 What it reads
 
-- **App usage statistics** (Usage Stats / Digital Wellbeing): for each app, how many minutes you used it in the foreground and during which time-of-day bands. This is the foundational data used to compute the daily "Dopa Index".
-- **Notification events** (Notification Access): numeric count of notifications received and opened. We do not read the content of notifications, only that they occurred.
-- **The list of apps installed on the device** (launchable apps): solely in order to categorise them (social, gambling, productivity, etc.) at the time of calculation. Read on-demand, never transmitted.
+- **App usage statistics** (Usage Stats / Digital Wellbeing): for each app, how many minutes you have used it in the foreground and in which time slots. This is the fundamental data to build the daily "Dopa Index".
+- **Notification events** (Notification Access): numerical count of notifications received and opened. We do not read the content of notifications, only that they occurred.
+- **List of apps installed on the device** (launchable apps): only to categorize their type (social, gambling, productivity, etc.) during calculation. Read on-demand, never transmitted.
 
-### 3.2 What it does **NOT** read
+### 3.2 What it **NEVER** reads
 
-- Never the content of messages, calls, emails, photos, files, browser history, contacts, calendar.
+- Never content of messages, calls, emails, photos, files, browser history, contacts, calendar.
 - Never GPS location.
 - Never microphone, camera, biometric sensors.
 - Never keyboard input or accessibility services.
-- Never Google account data or login credentials.
+- Never Google account data or login.
 
-### 3.3 Where the data is stored on the device
+### 3.3 Where data is stored on the device
 
-All raw data (events for the current day) and aggregated data (daily history, up to 60 days) are stored **locally** in:
+All raw data (events of the current day) and aggregated data (daily history, up to 60 days) are stored **locally** in:
 
-- Android standard `SharedPreferences` (preferences and state),
+- `SharedPreferences` standard Android (preferences and state),
 - private app files (persistent history).
 
 They are accessible **only to the app itself**. When you uninstall Dopamine Monitor, they are automatically deleted by the Android system.
 
-You may also delete all local data from inside the app at any time: Settings → "Erase all data".
+You can also delete all local data at any time from within the app: Settings → "Erase all data".
 
 ---
 
-## 4. Android permissions requested
+## 4. Android permissions required
 
-The app only works if you grant the following permissions. You actively grant them from the Android system settings. You may revoke them at any time.
+The app works only if you grant the following permissions. You actively grant them from Android system settings. You can revoke them at any time.
 
-| Permission | What it's used for | What happens if you deny it |
+| Permission | Purpose | What happens if you deny it |
 |---|---|---|
-| **Access to usage statistics** (`PACKAGE_USAGE_STATS`) | Reading how much time you spend on apps | The app cannot function and will say so |
-| **Access to notifications** (`NotificationListener`) | Counting notifications received (not the content) | The "notifications" axis of the Dopa Index stays at zero, but everything else works |
-| **Background execution** | Updating the history every day at midnight | You must open the app manually to see updated data |
+| **Access to usage statistics** (`PACKAGE_USAGE_STATS`) | Read how much time you spend on apps | The app cannot work and will tell you |
+| **Access to notifications** (`NotificationListener`) | Count notifications received (not content) | The "notifications" axis of the Dopa Index stays at zero, but the rest works |
+| **Background execution** | Update history every day at midnight | You must open the app manually to see updated data |
 
 We do not request permissions for location, contacts, microphone, camera, SMS, storage, etc.
 
@@ -73,96 +73,103 @@ We do not request permissions for location, contacts, microphone, camera, SMS, s
 
 ## 5. Telemetry to our servers (optional, opt-in)
 
-This is the only circumstance in which any data concerning you leaves the device. **You must give explicit consent** during onboarding or from Settings: without your explicit consent, the app does not send anything to any server.
+This is the only circumstance in which data concerning you leaves the device. **You must consent explicitly** during onboarding or from Settings: without your explicit consent, the app does not send anything to any server.
 
 ### 5.1 Purpose
 
-To improve the statistical model behind the Dopa Index and calibrate it on a population of real users. We see aggregated distributions (e.g. "the average Dopa Index of users after 30 days of use is X"), not individual data.
+To improve the statistical model of the Dopa Index and calibrate it on a population of real users. We see aggregated distributions (e.g., "the average Dopa Index of users after 30 days of use is X"), not individual data.
 
-### 5.2 What is transmitted
+### 5.2 What is sent
 
-Exactly one small JSON summary for each closed day stored on your device. The full schema is documented in the source code (`lib/telemetry/payload_builder.dart`). It contains:
+Exactly one small JSON summary for each closed day you have on the device. The complete schema is documented in the source code (`lib/telemetry/payload_builder.dart`). It contains:
 
 - Numbers from 0 to 100 for the overall Dopa Index and for each of the 8 axes (social, video, notifications, etc.).
-- Which axis turned out to be "dominant".
-- Which "patterns" were activated (e.g. "post-23:00 use").
-- A random device identifier (`install_id`, generated by the app itself the first time you open it), the app version, the Android version.
-- An observation "bucket" (`new` < 14 days, `settled` 14-89, `long` ≥ 90) instead of the exact number of days of use — this prevents the precise number from being able to single out the individual device.
-- (Anonymous) count of friction events (popups) triggered and respected during the day.
+- Which axis was "dominant".
+- Which "patterns" were activated (e.g., "post-23:00 use").
+- A random device identifier (`install_id`, generated by the app itself the first time), app version, Android version.
+- An observation "bucket" (`new` < 14 days, `established` 14-89, `long` ≥ 90) instead of the exact number of days of use — this to prevent the precise number from allowing us to recognize the individual device.
+- Number of friction events (popups) triggered and respected during the day.
 
-### 5.3 What is **NEVER** transmitted
+### 5.3 What is **NEVER** sent
 
-- Never the name of any specific app you used.
+- Never the name of a specific app you used.
 - Never individual usage durations (only the aggregated score).
-- Never content, messages, personal identifiers, email addresses, phone numbers, IMEI, MAC addresses, advertising identifiers.
+- Never content, messages, personal identifiers, email, phone number, IMEI, MAC addresses, advertising identifiers.
 - Never location, sensors, browser history.
 
-### 5.4 Identification
+### 5.4 Identification and legal nature of the data
 
-The only identifier is a random `install_id` generated by the app the first time you open it (UUID). It is not linked to your Google account, to your IMEI, or to any login. If you uninstall and reinstall the app, you obtain a new `install_id` that cannot be linked to the previous one.
+The only identifier transmitted is a random `install_id` generated by the app the first time you open it (UUID). It is not linked to your Google account, IMEI, name or email, or any login. If you uninstall and reinstall the app, you get a new `install_id` not linkable to the previous one.
 
-We consider the transmitted payload to be **anonymous** within the meaning of the GDPR: the combination of fields does not allow you to be identified, not even by combination with other publicly available sources. If we were to discover a re-identification risk in the future, we would update this policy and notify you inside the app.
+The payloads we receive are **pseudonymized**, not anonymous, within the meaning of Art. 4 No. 5 GDPR. The difference is important:
+
+- **Anonymous** means the data cannot in any way be traced back to a specific person, not even with additional information. Anonymous data is not personal data and falls outside GDPR.
+- **Pseudonymized** means the data does not contain direct identifiers (name, email, phone number), but is linked to a key (in our case, the `install_id`) that could allow tracing to the person if that key were combined with other information.
+
+On our server, the `install_id` alone is a random number: we do not know to whom it belongs. It becomes an identification key only if you communicate it to us (to exercise your rights — see §7). For this reason we treat your payloads **as personal data under GDPR**, applying all the safeguards of the Regulation (explicit consent, purpose limitation, limited retention, data subject rights).
+
+The **aggregated statistical distributions** we produce from the payloads (e.g., means, distributions, standard deviations across the entire user population) are instead anonymous data, because they lose the `install_id` key during the aggregation process.
 
 ### 5.5 Where the data is sent
 
-Data is sent via HTTPS to servers operated by **Scaleway**, located in the European Union (Paris, FR). Scaleway acts as "data processor" within the meaning of the GDPR. See: https://www.scaleway.com/en/privacy/
+Data is sent via HTTPS to servers operated by **Scaleway**, located in the European Union (Paris, FR). Scaleway acts as a "processor" within the meaning of GDPR. See: https://www.scaleway.com/en/privacy/
 
 ### 5.6 How long we keep it
 
-Payloads are retained for **up to 24 months** from receipt, after which they are automatically deleted. Aggregated distributions (averages, statistics) may be retained longer because they contain no individual records.
+Payloads are kept for **a maximum of 24 months** from receipt, then automatically deleted. Aggregated distributions (means, statistics) may be kept longer because they do not contain individual records.
 
 ### 5.7 How to withdraw consent
 
-At any time you may go to Settings → "Telemetry" and choose "Do not participate". From that moment, the app will no longer send anything. **Data already transmitted in the past remains on our servers until the 24-month limit elapses**, unless you explicitly request earlier erasure (see §7.4 — right to erasure).
+At any time you can go to Settings → "Telemetry" and choose "Do not participate". From that moment the app will no longer send anything. **What has already been sent in the past remains on our servers until the 24 months expire**, unless you explicitly request early deletion (see §7.4 — right to erasure).
 
 ---
 
-## 6. Lawful basis for processing
+## 6. Legal basis for processing
 
-- For data that remains **on the device** (§3): there is no "processing" by us within the meaning of the GDPR, because we neither receive nor access that data. It is your data, on your device, for personal use.
-- For **telemetry** to our servers (§5): the lawful basis is your **explicit consent** (Art. 6(1)(a) of the GDPR). No consent, no transmission.
+- For data that stays **on the device** (§3): there is no "processing" by us under GDPR, because we neither receive nor access this data. It is your data on your device, for personal use.
+- For **telemetry** to our servers (§5): the legal basis is your **explicit consent** (Art. 6(1)(a) GDPR). Without consent, no transmission.
 
 ---
 
 ## 7. Your GDPR rights
 
-Because telemetry is keyed to a random identifier not linked to you, we may be unable to extract data specifically "yours" from our database. Nevertheless, you may always exercise the following rights:
+To exercise your rights over the payloads transmitted to our server via optional telemetry, you must communicate your `install_id` to us (you find it in the app: Settings → Telemetry → "Show installation ID"). Without the `install_id` we cannot identify your specific records in the database. For data that stays on the device, you have full control from the app itself.
 
-### 7.1 Right to be informed
+### 7.1 Right to information
 You are reading this document.
 
 ### 7.2 Right of access (Art. 15 GDPR)
-You may ask us whether we process data referable to your device, and obtain a copy of the payloads transmitted. To do so, we need your `install_id` (you can find it under Settings → "Telemetry" → "Show installation ID"). Write to dopamine.monitor.dev@gmail.com.
+You can ask us if we process data referable to your device and receive a copy of the transmitted payloads. To do so, we need your `install_id` (you find it in Settings → "Telemetry" → "Show installation ID"). Write to dopamine.monitor.dev@gmail.com.
 
 ### 7.3 Right to rectification (Art. 16 GDPR)
-The transmitted data consists of computed numeric scores: there is nothing to "rectify". If the app computes a value incorrectly (e.g. an engine bug), you can report it via the in-app feedback button.
+The transmitted data is calculated numerical scores: there is nothing to "rectify". If the app calculates a value incorrectly (e.g., engine bug), you can report it with the in-app feedback button.
 
 ### 7.4 Right to erasure (Art. 17 GDPR)
-You may request earlier deletion of payloads associated with your `install_id` by writing to dopamine.monitor.dev@gmail.com and including the ID. We process such requests within 30 days.
+You can request early deletion of the payloads referring to your `install_id`, by writing to dopamine.monitor.dev@gmail.com and including the ID. We process within 30 days. See also the dedicated page: https://atoffa978.github.io/dopamine-monitor-legal/data-deletion-en.html
 
 ### 7.5 Right to restriction (Art. 18 GDPR)
-You may request that your data be "frozen" with no further processing. Write to us.
+You can request that your data be "frozen" without further processing. Write to us.
 
-### 7.6 Right to object and to data portability (Art. 20-21 GDPR)
-You may request a copy of the payloads transmitted in JSON format. They are already structured; simply request them.
+### 7.6 Right to object and portability (Art. 20-21 GDPR)
+You can request a copy of the transmitted payloads in JSON format. They are already structured, just request them.
 
 ### 7.7 Right to lodge a complaint (Art. 77 GDPR)
-If you believe that the processing of your data violates the GDPR, you may lodge a complaint with the supervisory authority:
+If you believe the processing of your data violates GDPR, you can lodge a complaint with the supervisory authority:
 
 - **Italy**: Garante per la Protezione dei Dati Personali — https://www.garanteprivacy.it/
-- Or with the supervisory authority of the EU country where you usually reside.
+- Or the authority of the EU country where you habitually reside.
 
 ---
 
-## 8. Data of minors
+## 8. Children's data
 
-The app is not intended for minors under the age of 14. We do not intentionally request data from minors. If you are a parent or guardian and you believe that a minor in your care is using the app, please contact us.
+The app is not intended for children under 14. We do not intentionally request children's data. If you are a parent/guardian and believe that a child under your care uses the app, contact us.
 
 ---
 
-## 9. Transfers outside the EU
+## 9. Extra-EU transfers
 
-The telemetry servers are located in the EU (Scaleway, Paris). We do not transfer data outside the EU.
+Telemetry servers are in the EU (Scaleway, Paris). We do not transfer data outside the EU.
 
 ---
 
@@ -170,27 +177,27 @@ The telemetry servers are located in the EU (Scaleway, Paris). We do not transfe
 
 The app **does not use**: cookies, advertising trackers, fingerprinting, third-party analytics SDKs (no Google Analytics, no Firebase Analytics, no Crashlytics, no Mixpanel, no Amplitude, etc.), advertising of any kind, marketing communications.
 
-The app **does use**:
+The app **uses**:
 
 - an internal logging library of the Flutter framework (development/debug, not telemetry),
-- a network connection only for telemetry transmission (§5) and, in the future, possible model update notices.
+- the network connection only for the transmission of telemetry (§5) and, in the future, any update notice of the model.
 
 ---
 
 ## 11. Changes to this policy
 
-When we update this policy, we will notify you by:
+When we update this policy, we will inform you by:
 
 1. Updating the version number and date at the top.
-2. Showing an in-app notice the first time you open a new version with an updated policy.
+2. Showing an in-app notice the first time you open a new version with updated policy.
 
-If the update concerns an expansion of the data transmitted or new processing purposes, **we will ask for your explicit consent again** before applying it.
+If the update concerns the expansion of transmitted data or new processing purposes, **we will request your explicit consent again** before applying them.
 
 ---
 
-## 12. Contact
+## 12. Contacts
 
-For any question, access request, or report, write to:
+For any question, access request, or report, write to us at:
 
 **dopamine.monitor.dev@gmail.com**
 

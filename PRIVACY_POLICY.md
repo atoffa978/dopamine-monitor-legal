@@ -1,14 +1,14 @@
 # Privacy Policy — Dopamine Monitor
 
-**In vigore dal**: 18 maggio 2026
-**Versione documento**: 1.1
+**In vigore dal**: 20 maggio 2026
+**Versione documento**: 1.2
 **Lingua autoritativa**: italiano
 
 ---
 
 ## 1. In due righe
 
-Dopamine Monitor è un'app di **auto-osservazione passiva** dell'uso del telefono. Tutto quello che riguarda te personalmente — quali app usi, quando, per quanto — resta sul tuo dispositivo. Verso i nostri server inviamo solo, **se tu lo accetti**, un piccolo riassunto giornaliero anonimo per migliorare il modello statistico. Non vendiamo dati a nessuno, non mostriamo pubblicità, non ti profiliamo.
+Dopamine Monitor è un'app di **auto-osservazione passiva** dell'uso del telefono. Tutto quello che riguarda te personalmente — quali app usi, quando, per quanto — resta sul tuo dispositivo. Verso i nostri server inviamo solo, **se tu lo accetti**, un piccolo riassunto giornaliero pseudonimizzato per migliorare il modello statistico. Non vendiamo dati a nessuno, non mostriamo pubblicità, non ti profiliamo.
 
 Se questa premessa ti basta, puoi smettere di leggere. Per i dettagli, prosegui.
 
@@ -26,7 +26,7 @@ Per qualunque richiesta sul trattamento dei tuoi dati personali puoi scrivere al
 
 ## 3. Quali dati raccoglie l'app sul tuo dispositivo
 
-Per funzionare, Dopamine Monitor legge dal sistema Android **dati di utilizzo del telefono**. Questi dati **non lasciano mai il dispositivo** salvo quanto descritto al §5 ("Telemetria"), e solo dopo essere stati aggregati e anonimizzati.
+Per funzionare, Dopamine Monitor legge dal sistema Android **dati di utilizzo del telefono**. Questi dati **non lasciano mai il dispositivo** salvo quanto descritto al §5 ("Telemetria"), e solo dopo essere stati aggregati in punteggi sintetici 0-100 (mai con i nomi delle singole app).
 
 ### 3.1 Cosa legge
 
@@ -86,7 +86,7 @@ Esattamente un piccolo riassunto JSON per ogni giorno chiuso che hai sul disposi
 - Quali "pattern" sono stati attivati (es. "uso post-23:00").
 - Un identificativo casuale del dispositivo (`install_id`, generato dall'app stessa la prima volta), versione dell'app, versione di Android.
 - Un "secchio" di osservazione (`nuovo` < 14 giorni, `assestato` 14-89, `lungo` ≥ 90) invece del numero esatto di giorni di uso — questo per evitare che il numero preciso ci permetta di riconoscere il singolo dispositivo.
-- Numero (anonimo) di eventi di frizione (popup) attivati e rispettati nella giornata.
+- Numero di eventi di frizione (popup) attivati e rispettati nella giornata.
 
 ### 5.3 Cosa **NON** viene mai inviato
 
@@ -95,11 +95,18 @@ Esattamente un piccolo riassunto JSON per ogni giorno chiuso che hai sul disposi
 - Mai contenuti, messaggi, identificativi personali, email, numero di telefono, IMEI, indirizzi MAC, identificativi pubblicitari.
 - Mai posizione, sensori, cronologia browser.
 
-### 5.4 Identificazione
+### 5.4 Identificazione e natura giuridica del dato
 
-L'unico identificativo è un `install_id` casuale generato dall'app la prima volta che la apri (UUID). Non è collegato al tuo account Google, al tuo numero IMEI, ad alcun login. Se disinstalli e reinstalli l'app, ottieni un nuovo `install_id` non collegabile al precedente.
+L'unico identificativo trasmesso è un `install_id` casuale generato dall'app la prima volta che la apri (UUID). Non è collegato al tuo account Google, al tuo numero IMEI, al tuo nome o email, ad alcun login. Se disinstalli e reinstalli l'app, ottieni un nuovo `install_id` non collegabile al precedente.
 
-Riteniamo che il payload trasmesso sia **anonimo** ai sensi del GDPR: l'insieme dei campi non permette di identificarti, neppure tramite combinazione con altre fonti pubbliche. Se in futuro scoprissimo un rischio di re-identificazione, aggiorneremo questa policy e te lo comunicheremo all'interno dell'app.
+I payload che riceviamo sono **pseudonimizzati**, non anonimi, ai sensi dell'art. 4 n. 5 del GDPR. La differenza è importante:
+
+- **Anonimo** significa che il dato non può in nessun modo essere ricondotto a una persona specifica, neppure con informazioni aggiuntive. I dati anonimi non sono dati personali e non rientrano nel GDPR.
+- **Pseudonimizzato** significa che il dato non contiene identificatori diretti (nome, email, numero di telefono), ma è collegato a una chiave (nel nostro caso, l'`install_id`) che potrebbe permettere di risalire alla persona se quella chiave fosse messa in relazione con altre informazioni.
+
+Sul nostro server, l'`install_id` da solo è un numero casuale: non sappiamo a chi appartenga. Diventa una chiave di identificazione solo se sei tu a comunicarcelo (per esercitare i tuoi diritti — vedi §7). Per questo motivo trattiamo i tuoi payload **come dati personali ai sensi del GDPR**, applicando tutte le garanzie del Regolamento (consenso esplicito, limitazione delle finalità, conservazione limitata, diritti dell'interessato).
+
+Le **distribuzioni statistiche aggregate** che produciamo a partire dai payload (es. medie, distribuzioni, deviazioni standard su tutta la popolazione di utenti) sono invece dati anonimi, perché perdono la chiave `install_id` durante il processo di aggregazione.
 
 ### 5.5 Dove vengono inviati
 
@@ -124,7 +131,7 @@ In qualsiasi momento puoi andare in Impostazioni → "Telemetria" e scegliere "N
 
 ## 7. I tuoi diritti GDPR
 
-Dato che la telemetria è basata su un identificativo casuale non legato a te, potremmo non essere in grado di estrarre dati specificamente "tuoi" dal nostro database. Tuttavia, puoi sempre esercitare i seguenti diritti:
+Per esercitare i tuoi diritti sui payload trasmessi al nostro server tramite telemetria opzionale, dovrai comunicarci il tuo `install_id` (lo trovi nell'app: Impostazioni → Telemetria → "Mostra ID installazione"). Senza l'`install_id` non possiamo identificare i tuoi record specifici nel database. Per i dati che restano sul dispositivo, hai il pieno controllo dall'app stessa.
 
 ### 7.1 Diritto di informazione
 Stai leggendo questo documento.
@@ -136,7 +143,7 @@ Puoi chiederci se trattiamo dati riferibili al tuo dispositivo e ricevere copia 
 I dati trasmessi sono punteggi numerici calcolati: non c'è qualcosa da "rettificare". Se l'app calcola male un valore (es. bug nell'engine), puoi segnalarlo con il pulsante feedback in-app.
 
 ### 7.4 Diritto di cancellazione (art. 17 GDPR)
-Puoi chiedere la cancellazione anticipata dei payload riferiti al tuo `install_id`, scrivendoci a dopamine.monitor.dev@gmail.com e includendo l'ID. Procediamo entro 30 giorni.
+Puoi chiedere la cancellazione anticipata dei payload riferiti al tuo `install_id`, scrivendoci a dopamine.monitor.dev@gmail.com e includendo l'ID. Procediamo entro 30 giorni. Vedi anche la pagina dedicata: https://atoffa978.github.io/dopamine-monitor-legal/data-deletion.html
 
 ### 7.5 Diritto di limitazione (art. 18 GDPR)
 Puoi richiedere che i tuoi dati siano "congelati" senza ulteriore trattamento. Scrivici.

@@ -38,6 +38,8 @@ code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-si
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
 .foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule);
   color: var(--muted); font-size: 0.85rem; }
+.callout { border-left: 3px solid var(--accent); margin: 20px 0; padding: 12px 0 12px 14px;
+  background: var(--code-bg); color: var(--fg); font-size: 0.97rem; }
 </style>
 </head>
 <body>
@@ -57,10 +59,10 @@ code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-si
 </header>
 <main>
   <h1>Cancellazione dei dati</h1>
-  <p>Dopamine Monitor è un'app di auto-osservazione passiva: la stragrande maggioranza dei dati che ti riguardano (statistiche di utilizzo, conteggio notifiche, lista app installate) <strong>non lascia mai il tuo dispositivo</strong>. Solo se hai esplicitamente acconsentito alla telemetria opzionale, l'app invia un riassunto giornaliero anonimo (punteggi 0-100, nessun nome di app) ai nostri server europei.</p>
+  <p>Dopamine Monitor è un'app di auto-osservazione passiva: la stragrande maggioranza dei dati che ti riguardano (statistiche di utilizzo, conteggio notifiche, lista app installate) <strong>non lascia mai il tuo dispositivo</strong>. Solo se hai esplicitamente acconsentito alla telemetria opzionale, l'app invia un riassunto giornaliero pseudonimizzato (punteggi 0-100, nessun nome di app) ai nostri server europei.</p>
 
   <h2>1. Cancellare i dati locali sul dispositivo</h2>
-  <p>Apri l'app → <strong>Impostazioni</strong> → <strong>Cancella tutti i dati</strong>. L'operazione cancella immediatamente e in modo irreversibile dal dispositivo:</p>
+  <p>Apri l'app &rarr; <strong>Impostazioni</strong> &rarr; <strong>Cancella tutti i dati</strong>. L'operazione cancella immediatamente e in modo irreversibile dal dispositivo:</p>
   <ul>
     <li>tutte le statistiche giornaliere accumulate (fino a 60 giorni di storico)</li>
     <li>le preferenze utente (lingua, orari, override categorie)</li>
@@ -70,25 +72,33 @@ code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-si
   <p>In alternativa, disinstallare l'app produce lo stesso effetto: il sistema Android elimina automaticamente tutti i dati associati.</p>
 
   <h2>2. Cancellare i dati telemetria sui nostri server</h2>
-  <p>Se hai acconsentito alla telemetria opzionale, sui nostri server (Scaleway, Parigi) possono trovarsi i riassunti giornalieri anonimi associati al tuo <code>install_id</code>. Per richiederne la cancellazione anticipata (di default vengono cancellati automaticamente dopo 24 mesi):</p>
+  <p>Se hai acconsentito alla telemetria opzionale, sui nostri server (Scaleway, Parigi) possono trovarsi i riassunti giornalieri <strong>pseudonimizzati</strong> associati al tuo <code>install_id</code>. Per richiederne la cancellazione anticipata (di default vengono cancellati automaticamente dopo 24 mesi):</p>
   <ol>
-    <li>Recupera il tuo <code>install_id</code>: apri l'app → <strong>Impostazioni</strong> → <strong>Telemetria</strong> → <strong>Mostra ID installazione</strong>. È un UUID nel formato <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</li>
+    <li>Recupera il tuo <code>install_id</code>: apri l'app &rarr; <strong>Impostazioni</strong> &rarr; <strong>Telemetria</strong> &rarr; <strong>Mostra ID installazione</strong>. &Egrave; un UUID nel formato <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</li>
     <li>Scrivi un'email a <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a> con oggetto "Richiesta cancellazione dati GDPR" e il tuo <code>install_id</code> nel corpo del messaggio.</li>
     <li>Riceverai conferma entro <strong>30 giorni</strong> dalla ricezione della richiesta, come previsto dall'art. 17 GDPR.</li>
   </ol>
-  <p>Non sono richiesti altri dati personali (no nome, no documento). L'<code>install_id</code> è sufficiente perché è l'unico identificatore che colleghiamo ai dati telemetria.</p>
+  <p>Non sono richiesti altri dati personali (no nome, no documento). L'<code>install_id</code> &egrave; sufficiente perch&eacute; &egrave; l'unico identificatore che colleghiamo ai dati telemetria.</p>
 
-  <h2>3. Quali dati restano dopo la cancellazione</h2>
-  <p>Le distribuzioni statistiche aggregate (es. "il Dopa Index medio degli utenti dopo 30 giorni d'uso è X") possono restare nei nostri sistemi anche dopo la cancellazione dei tuoi payload individuali, perché sono dati aggregati anonimi che non contengono record riferibili a te.</p>
+  <h2>3. Perch&eacute; serve l'install_id</h2>
+  <div class="callout">
+    <p style="margin:0 0 8px"><strong>I dati che riceviamo sono pseudonimizzati, non anonimi.</strong></p>
+    <p style="margin:0">Il nostro server non sa chi sei: non ha la tua email, il tuo nome, n&eacute; dati che colleghino il tuo <code>install_id</code> alla tua identit&agrave; reale. Da solo, l'install_id &egrave; un numero casuale senza significato per noi.</p>
+  </div>
+  <p>Quando tu ci comunichi il tuo install_id via email, in quel momento ci dai la chiave che ci permette di identificare i tuoi record e cancellarli. Prima di quella tua email, non sappiamo associare i record a una persona specifica.</p>
+  <p>Per questo non possiamo identificarti se ci scrivi senza l'install_id. Se hai disinstallato l'app prima di averlo salvato altrove, scrivici comunque: faremo del nostro meglio (es. cancellando in base alla data approssimativa di prima e ultima ricezione), ma non possiamo garantire la cancellazione completa dei tuoi record specifici se non possiamo distinguerli con certezza da quelli di altri utenti.</p>
 
-  <h2>4. Riferimenti normativi</h2>
-  <p>Diritto di cancellazione: <a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">art. 17 del Regolamento UE 2016/679 (GDPR)</a>. Per tutti gli altri diritti (accesso, rettifica, limitazione, opposizione, portabilità, reclamo al Garante), vedi la <a href="./privacy.html#7-i-tuoi-diritti-gdpr">Privacy Policy §7</a>.</p>
+  <h2>4. Quali dati restano dopo la cancellazione</h2>
+  <p>Le distribuzioni statistiche aggregate (es. "il Dopa Index medio degli utenti dopo 30 giorni d'uso &egrave; X") possono restare nei nostri sistemi anche dopo la cancellazione dei tuoi payload individuali, perch&eacute; sono dati aggregati anonimi (senza chiave <code>install_id</code>) che non contengono record riferibili a te.</p>
 
-  <h2>5. Contatto</h2>
+  <h2>5. Riferimenti normativi</h2>
+  <p>Diritto di cancellazione: <a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener">art. 17 del Regolamento UE 2016/679 (GDPR)</a>. Per tutti gli altri diritti (accesso, rettifica, limitazione, opposizione, portabilit&agrave;, reclamo al Garante), vedi la <a href="./privacy.html#7-i-tuoi-diritti-gdpr">Privacy Policy &sect;7</a>.</p>
+
+  <h2>6. Contatto</h2>
   <p>Per qualunque domanda: <a href="mailto:dopamine.monitor.dev@gmail.com">dopamine.monitor.dev@gmail.com</a></p>
 </main>
 <footer class="foot">
-  Documento autoritativo in italiano. Versione: 1.0 · In vigore dal 20 maggio 2026.
+  Documento autoritativo in italiano. Versione: 1.1 &middot; In vigore dal 20 maggio 2026.
 </footer>
 </div>
 </body>
